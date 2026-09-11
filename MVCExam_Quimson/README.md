@@ -1,4 +1,4 @@
-﻿Quimson, [First Name] - BSIT31E2
+﻿Quimson, Allen Dwayn T. - BSIT31E3
 # Prefinal Exam – IT Elective 2
 ## Exam Answers
 | # | Question (Summary) | Answer | Explanation |
