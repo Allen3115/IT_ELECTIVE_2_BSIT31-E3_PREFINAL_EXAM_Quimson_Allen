@@ -1,0 +1,358 @@
+﻿using MVCExam_Quimson.Models;
+
+namespace MVCExam_Quimson.Data
+{
+    public class QuestionRepository
+    {
+        private readonly List<Question> _questions = new();
+
+        public QuestionRepository()
+        {
+            Add(new Question
+            {
+                Number = 1,
+                Text = "What is the main problem solved by using a database instead of an in-memory collection?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "It makes C# code shorter",
+                    ["B"] = "It prevents the application from restarting",
+                    ["C"] = "It allows data to persist after the application stops",
+                    ["D"] = "It removes the need for MVC"
+                },
+                SelectedAnswer = "C",
+                CorrectAnswer = "C",
+                Topic = "Relational Data Modeling",
+                Explanation = "In-memory collections disappear when the app stops; a database keeps the data around after that."
+            });
+
+            Add(new Question
+            {
+                Number = 2,
+                Text = "Which approach is being used when an existing database is used to generate EF Core entity classes?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Code-First",
+                    ["B"] = "Database-First",
+                    ["C"] = "Model-First",
+                    ["D"] = "Controller-First"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Relational Data Modeling",
+                Explanation = "Database-First reverse-engineers an existing schema into C# entity classes."
+            });
+
+            Add(new Question
+            {
+                Number = 3,
+                Text = "What is the primary purpose of Entity Framework Core?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "To create HTML pages automatically",
+                    ["B"] = "To replace the MVC Controller",
+                    ["C"] = "To map objects in code to relational database data",
+                    ["D"] = "To replace the C# compiler"
+                },
+                SelectedAnswer = "C",
+                CorrectAnswer = "C",
+                Topic = "Relational Data Modeling",
+                Explanation = "EF Core is an ORM: it maps C# objects to rows in a relational database."
+            });
+
+            Add(new Question
+            {
+                Number = 4,
+                Text = "Which EF Core component is primarily responsible for communicating with the database?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "DbContext",
+                    ["B"] = "DbSetView",
+                    ["C"] = "ControllerContext",
+                    ["D"] = "RazorContext"
+                },
+                SelectedAnswer = "A",
+                CorrectAnswer = "A",
+                Topic = "Relational Data Modeling",
+                Explanation = "DbContext manages the connection and change-tracking between entities and the database."
+            });
+
+            Add(new Question
+            {
+                Number = 5,
+                Text = "What does the following command primarily do?\n\ndotnet ef dbcontext scaffold \"ConnectionString\" Microsoft.EntityFrameworkCore.SqlServer -o Models",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Deletes the database",
+                    ["B"] = "Creates a new MVC project",
+                    ["C"] = "Generates EF Core models and a DbContext from an existing database",
+                    ["D"] = "Starts the MVC application"
+                },
+                SelectedAnswer = "C",
+                CorrectAnswer = "C",
+                Topic = "Model Binding and Controller Actions",
+                Explanation = "The dbcontext scaffold command reverse-engineers an existing database into EF Core model classes."
+            });
+
+            Add(new Question
+            {
+                Number = 6,
+                Text = "Where is a database connection string commonly stored in an ASP.NET Core MVC application?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Program.cs only",
+                    ["B"] = "appsettings.json",
+                    ["C"] = "Index.cshtml",
+                    ["D"] = "Student.cs"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Conceptual Data Architecture",
+                Explanation = "Connection strings live in configuration (appsettings.json), not hard-coded in a view or model."
+            });
+
+            Add(new Question
+            {
+                Number = 7,
+                Text = "A Student belongs to exactly one Section, while a Section can contain many students. What type of relationship is this?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "One-to-One",
+                    ["B"] = "One-to-Many",
+                    ["C"] = "Many-to-Many",
+                    ["D"] = "Many-to-One only"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Conceptual Data Architecture: Designing ERDs",
+                Explanation = "One Section has many Students, and each Student has one Section - a classic One-to-Many relationship."
+            });
+
+            Add(new Question
+            {
+                Number = 8,
+                Text = "In the following example, what is SectionId?\n\npublic int SectionId { get; set; }\npublic Section Section { get; set; }",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Primary key of Student",
+                    ["B"] = "Foreign key referencing Section",
+                    ["C"] = "Navigation property",
+                    ["D"] = "Database connection string"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Conceptual Data Architecture: Designing ERDs",
+                Explanation = "SectionId is the foreign key that points to the related Section row."
+            });
+
+            Add(new Question
+            {
+                Number = 9,
+                Text = "What is the purpose of a navigation property such as public Section Section { get; set; }?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "It stores the database password",
+                    ["B"] = "It represents a relationship to another entity",
+                    ["C"] = "It creates a new database",
+                    ["D"] = "It validates the student's name"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Razor Syntax and Dynamic Rendering",
+                Explanation = "Navigation properties let EF Core traverse from one entity to its related entity in code."
+            });
+
+            Add(new Question
+            {
+                Number = 10,
+                Text = "What does .Include() generally allow EF Core to do?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Delete the Section table",
+                    ["B"] = "Load related Section data together with Students",
+                    ["C"] = "Create a new Student",
+                    ["D"] = "Validate Student input"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Razor Syntax and Dynamic Rendering",
+                Explanation = "Include() eagerly loads a related navigation property in the same query."
+            });
+
+            Add(new Question
+            {
+                Number = 11,
+                Text = "Why might a ViewModel be used when displaying Student and Section information?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "To replace the database",
+                    ["B"] = "To combine or shape the data specifically needed by the view",
+                    ["C"] = "To automatically create database tables",
+                    ["D"] = "To prevent controllers from using LINQ"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Data Normalization & Structural Integrity",
+                Explanation = "A ViewModel tailors or combines entity data into exactly the shape a view needs."
+            });
+
+            Add(new Question
+            {
+                Number = 12,
+                Text = "Consider this query:\n\nvar students = _context.Students.Include(s => s.Section).ToList();\n\nWhat is the main benefit of Include(s => s.Section)?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "It loads the related Section navigation property",
+                    ["B"] = "It creates a Section object manually",
+                    ["C"] = "It removes the foreign key",
+                    ["D"] = "It prevents the query from accessing the database"
+                },
+                SelectedAnswer = "A",
+                CorrectAnswer = "A",
+                Topic = "Data Normalization & Structural Integrity",
+                Explanation = "Include(s => s.Section) tells EF Core to eager-load each Student's related Section."
+            });
+
+            Add(new Question
+            {
+                Number = 13,
+                Text = "Which type of validation occurs in the browser before a request is sent to the server?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Database-level validation",
+                    ["B"] = "Client-side validation",
+                    ["C"] = "Server-side validation",
+                    ["D"] = "EF Core migration validation"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Data Validation and ModelState",
+                Explanation = "Client-side validation runs in the browser before the form is submitted."
+            });
+
+            Add(new Question
+            {
+                Number = 14,
+                Text = "Why is server-side validation still necessary if client-side validation exists?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Client-side validation can be bypassed",
+                    ["B"] = "Client-side validation automatically modifies the database",
+                    ["C"] = "Server-side validation only works with SQLite",
+                    ["D"] = "Client-side validation cannot display messages"
+                },
+                SelectedAnswer = "A",
+                CorrectAnswer = "A",
+                Topic = "Data Validation and ModelState",
+                Explanation = "Client-side checks can be disabled or bypassed, so the server must re-validate every request."
+            });
+
+            Add(new Question
+            {
+                Number = 15,
+                Text = "A school requires every student to have a unique Student Number. Which rule best represents this requirement?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Student Number should always be nullable",
+                    ["B"] = "Student Number should be unique",
+                    ["C"] = "Student Number should always be the same",
+                    ["D"] = "Student Number should contain only spaces"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Data Validation and ModelState",
+                Explanation = "The business rule directly maps to a uniqueness constraint on Student Number."
+            });
+
+            Add(new Question
+            {
+                Number = 16,
+                Text = "Which is the best reason for having a database-level unique constraint on StudentNumber?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "It protects data integrity even if application-level validation is bypassed",
+                    ["B"] = "It makes Razor Views render faster",
+                    ["C"] = "It removes the need for a Controller",
+                    ["D"] = "It automatically creates a ViewModel"
+                },
+                SelectedAnswer = "A",
+                CorrectAnswer = "A",
+                Topic = "Introduction to SQL",
+                Explanation = "A database-level constraint guarantees data integrity even if application-level validation is bypassed."
+            });
+
+            Add(new Question
+            {
+                Number = 17,
+                Text = "What is the purpose of a try...catch block in a controller?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "To create navigation properties",
+                    ["B"] = "To catch and handle exceptions that may occur during execution",
+                    ["C"] = "To generate database tables",
+                    ["D"] = "To perform client-side validation"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "Introduction to SQL",
+                Explanation = "try...catch lets a controller gracefully handle runtime errors instead of crashing the request."
+            });
+
+            Add(new Question
+            {
+                Number = 18,
+                Text = "Which middleware is commonly used in ASP.NET Core for centralized exception handling?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "UseDatabase()",
+                    ["B"] = "UseExceptionHandler()",
+                    ["C"] = "UseValidationHandler()",
+                    ["D"] = "UseMvcDatabase()"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "In-Memory Data Storage and CRUD Operations",
+                Explanation = "UseExceptionHandler() provides centralized exception handling in the ASP.NET Core pipeline."
+            });
+
+            Add(new Question
+            {
+                Number = 19,
+                Text = "A user requests /Student/999, but Student 999 does not exist. What would be the most appropriate response?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Display the student's information anyway",
+                    ["B"] = "Display a Not Found (404) response/page",
+                    ["C"] = "Delete Student 999",
+                    ["D"] = "Create Student 999 automatically"
+                },
+                SelectedAnswer = "B",
+                CorrectAnswer = "B",
+                Topic = "In-Memory Data Storage and CRUD Operations",
+                Explanation = "A missing resource should correctly return an HTTP 404 Not Found response."
+            });
+
+            Add(new Question
+            {
+                Number = 20,
+                Text = "A student already belongs to Section A for a particular subject. The application attempts to assign the same student to Section A again. What is the primary concern?",
+                Choices = new Dictionary<string, string>
+                {
+                    ["A"] = "Data integrity",
+                    ["B"] = "HTML formatting",
+                    ["C"] = "CSS inheritance",
+                    ["D"] = "Razor syntax"
+                },
+                SelectedAnswer = "A",
+                CorrectAnswer = "A",
+                Topic = "In-Memory Data Storage and CRUD Operations",
+                Explanation = "A duplicate assignment risks inconsistent or duplicate records, which is a data integrity concern."
+            });
+        }
+
+        public IReadOnlyList<Question> GetAll() =>
+            _questions.OrderBy(q => q.Number).ToList();
+
+        private void Add(Question question) =>
+            _questions.Add(question);
+    }
+}

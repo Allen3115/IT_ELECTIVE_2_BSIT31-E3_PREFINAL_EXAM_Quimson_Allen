@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MVCExam_Quimson.Models.Question>
+
+<div class="container my-4">
+    <h2>IT Elective 2 – Examination Questions & Answers</h2>
+    <hr />
+
+    @foreach (var q in Model)
+    {
+        <div class="card mb-4 p-3 shadow-sm">
+            <h5><strong>Question @q.Number</strong></h5>
+            <p class="lead">@q.Text</p>
+
+            <ul class="list-unstyled">
+                @foreach (var choice in q.Choices)
+                {
+                    <li class="mb-1"><strong>@choice.Key.</strong> @choice.Value</li>
+                }
+            </ul>
+
+            <div class="mt-3">
+                <span class="badge bg-secondary">Topic: @q.Topic</span>
+                <p class="text-success mt-2 mb-1"><strong>Correct Answer:</strong> @q.CorrectAnswer</p>
+                <p class="text-muted small"><em>Explanation: @q.Explanation</em></p>
+            </div>
+        </div>
+    }
+</div>

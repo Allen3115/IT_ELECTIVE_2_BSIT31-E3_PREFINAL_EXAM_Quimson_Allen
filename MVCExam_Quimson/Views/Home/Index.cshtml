@@ -2,7 +2,305 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<style>
+    body {
+        background: #f7f7f9;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #4a1525 0%, #800020 55%, #a52a45 100%);
+        border-radius: 0 0 35px 35px;
+        color: white;
+        padding: 80px 0;
+        box-shadow: 0 10px 35px rgba(80, 0, 30, 0.18);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-weight: 800;
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+        .hero h1 span {
+            color: #ffd9e2;
+        }
+
+    .hero p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.15rem;
+        max-width: 650px;
+    }
+
+    .answer-btn {
+        display: inline-block;
+        background: white;
+        color: #800020;
+        padding: 14px 25px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: all 0.2s ease;
+    }
+
+        .answer-btn:hover {
+            background: #ffdce5;
+            color: #5a0017;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+    .section-title {
+        font-weight: 800;
+        color: #20253a;
+    }
+
+    .section-line {
+        width: 55px;
+        height: 5px;
+        background: #800020;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .overview-text {
+        color: #687086;
+        max-width: 700px;
+    }
+
+    .info-card {
+        height: 100%;
+        background: white;
+        border: 1px solid #e5e6eb;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(20, 20, 40, 0.05);
+        transition: all 0.25s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #800020, #c54a68);
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(20, 20, 40, 0.1);
+        }
+
+    .icon-box {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        background: #f7e8ed;
+        color: #800020;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .info-card h3 {
+        color: #20253a;
+        font-weight: 750;
+        margin-bottom: 10px;
+    }
+
+    .file-name {
+        display: inline-block;
+        background: #f6edf0;
+        color: #800020;
+        padding: 5px 10px;
+        border-radius: 7px;
+        font-size: 0.82rem;
+        margin-bottom: 15px;
+    }
+
+    .info-card p {
+        color: #70778a;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    .footer-info {
+        border-top: 1px solid #dedfe5;
+        color: #858b9c;
+        padding: 25px 0;
+        margin-top: 60px;
+        font-size: 0.9rem;
+    }
+
+    .footer-dot {
+        margin: 0 10px;
+        color: #800020;
+    }
+</style>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-9">
+
+                <div class="hero-badge">
+                    COLLEGE OF COMPUTER STUDIES
+                </div>
+
+                <h1>
+                    IT Elective 2 –
+                    <br />
+                    <span>Web Systems and Technologies</span>
+                </h1>
+
+                <p>
+                    Prefinal Examination Answer Sheet & Review Portal
+                    <br />
+                    Academic Year 2026-2027
+                </p>
+
+                <a class="answer-btn"
+                   asp-controller="Exam"
+                   asp-action="Index">
+                    View my Answer Sheet
+                    <span class="ms-2">→</span>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- PROJECT OVERVIEW -->
+<section class="container py-5">
+
+    <div class="mb-5">
+        <div class="section-line"></div>
+
+        <h2 class="section-title">
+            Project Overview
+        </h2>
+
+        <p class="overview-text mt-3">
+            This project demonstrates a simple ASP.NET Core MVC application
+            that serves exam questions from an in-memory repository and
+            displays them through a dynamically rendered Razor view.
+        </p>
+    </div>
+
+
+    <div class="row g-4">
+
+        <!-- MODEL -->
+        <div class="col-md-4">
+            <div class="info-card">
+
+                <div class="icon-box">
+                    &lt;/&gt;
+                </div>
+
+                <h3>Model</h3>
+
+                <div class="file-name">
+                    Models/Question.cs
+                </div>
+
+                <p>
+                    Defines what an exam item looks like:
+                    its text, choices, selected answer,
+                    and the correct solution.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- VIEW -->
+        <div class="col-md-4">
+            <div class="info-card">
+
+                <div class="icon-box">
+                    ▣
+                </div>
+
+                <h3>View</h3>
+
+                <div class="file-name">
+                    Views/Exam/Index.cshtml
+                </div>
+
+                <p>
+                    Renders the questions dynamically as an
+                    interactive and styled exam sheet using
+                    Razor syntax.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- CONTROLLER -->
+        <div class="col-md-4">
+            <div class="info-card">
+
+                <div class="icon-box">
+                    ⚙
+                </div>
+
+                <h3>Controller</h3>
+
+                <div class="file-name">
+                    Controllers/ExamController.cs
+                </div>
+
+                <p>
+                    Pulls questions from the in-memory repository
+                    and delivers them to the appropriate views.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <div class="footer-info text-center">
+
+        <span>ASP.NET Core MVC</span>
+
+        <span class="footer-dot">•</span>
+
+        <span>No database used</span>
+
+        <span class="footer-dot">•</span>
+
+        <span>In-memory data repository only</span>
+
+    </div>
+
+</section>
+```
